@@ -3,7 +3,6 @@ AirBNB_clone
 ## Table of Content
 * [Introduction]("Introduction")
 * [Features]("Features")
-* [start]("start")
 * [Use]("Use")
 * [Requirements]("Requirements")
 * [Developers]("Developers")
@@ -22,23 +21,26 @@ the project is a team project developed by two ALX-SE students
 * exit
 * help
 
-## How to start
-'''
-$./console.py
+##  How to start
+<pre><code>
+$
+$ ./console.py
+(hbnb) 
+</code></pre>
 
-'''
+## Use
 
-##  Use
-<pre><code>'''
-(hbnb) <command> <arguments>
-'''</code></pre>
+**<command> <arguments>**
 
-<pre><code>'''
+<pre><code>
+
 (hbnb) help exit
 Quit command to exit the program
+(hbnb)
+(hbnb) exit
 $
 
-'''</code></pre>
+</code></pre>
 
 ## Requirements
 * ubuntu (linux) Version 20.0
