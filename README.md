@@ -29,15 +29,16 @@ $./console.py
 '''
 
 ##  Use
-'''
+<pre><code>'''
 (hbnb) <command> <arguments>
-'''
-'''
+'''</code></pre>
+
+<pre><code>'''
 (hbnb) help exit
 Quit command to exit the program
 $
 
-'''
+'''</code></pre>
 
 ## Requirements
 * ubuntu (linux) Version 20.0
