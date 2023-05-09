@@ -3,10 +3,10 @@ AirBNB_clone
 ## Table of Content
 * [Introduction]("Introduction")
 * [Features]("Features")
-* [How to start]("How to start")
+* [start]("start")
 * [Use]("Use")
 * [Requirements]("Requirements")
-* [Developers(Contributors)]("Contributors")
+* [Developers]("Developers")
 
 ## Introduction
 AirBNB_clone is a project that has to do with the development of AirBNB website look alike.
@@ -43,6 +43,6 @@ $
 * ubuntu (linux) Version 20.0
 * python3
 
-## Developers(Contributors)
+## Developers
 * Efe Oseaje
 * Iyenoma Provo
