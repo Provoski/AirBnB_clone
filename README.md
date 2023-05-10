@@ -3,15 +3,15 @@ AirBNB_clone
 ## Table of Content
 * [Introduction]("Introduction")
 * [Features]("Features")
-* [start]("start")
+* [Start]("How to start")
 * [Use]("Use")
 * [Requirements]("Requirements")
-* [Developers]("Developers")
+* [Developer]("Developers")
 
 ## Introduction
 AirBNB_clone is a project that has to do with the development of AirBNB website look alike.
 it uses a console interface (front-end) as an entry point for the program.
-the project is a team project developed by two ALX-SE students
+This project is a team project developed by two ALX-SE students.
 
 ## Features
 * create
@@ -22,23 +22,22 @@ the project is a team project developed by two ALX-SE students
 * exit
 * help
 
-## How to start
-'''
-$./console.py
+##  How to start
+```
+ $
+ $ ./console.py
+ (hbnb)
+```
+## Use
 
-'''
-
-##  Use
-<pre><code>'''
-(hbnb) <command> <arguments>
-'''</code></pre>
-
-<pre><code>'''
-(hbnb) help exit
-Quit command to exit the program
-$
-
-'''</code></pre>
+**<command> <arguments>**
+```
+ (hbnb) help exit
+ Quit command to exit the program
+ (hbnb)
+ (hbnb) exit
+ $
+```
 
 ## Requirements
 * ubuntu (linux) Version 20.0
