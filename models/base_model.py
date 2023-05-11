@@ -22,8 +22,9 @@ class BaseModel():
                 self.__dict__[key] = value
 
     def __str__(self) -> str:
-        """String representation of object"""
-        return f'[{self.__class__.__name__}] ({self.id}) {self.__dict__}'
+        """Returns the string representation of object"""
+        class_name = self.__class__.__name__
+        return f'[{class_name}] ({self.id}) {self.__dict__}'
     
     def save(self):
         """Updates updated_at with the current time"""
