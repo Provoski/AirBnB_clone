@@ -4,6 +4,7 @@
 import uuid
 import datetime
 
+
 class BaseModel():
     """This class defines all common attributes/methods for other classes"""
 
@@ -25,7 +26,7 @@ class BaseModel():
         """Returns the string representation of object"""
         class_name = self.__class__.__name__
         return f'[{class_name}] ({self.id}) {self.__dict__}'
-    
+
     def save(self):
         """Updates updated_at with the current time"""
         self.updated_at = datetime.datetime.now()
