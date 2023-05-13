@@ -8,20 +8,27 @@ from models.user import User
 class FileStorage():
     """
     attributes: __file_path, __objects
-    methods: all(), save()
+    methods:
+        all() - returns the dictionary < __objects>
+        save() - save dictionary objects <__objects> to a jason file
+        new(obj) creates new object using <obj>, where id is {class}.{id}
+        reload() - deserializes the JSON file <file.json>
+                to dictionary object <__objects>
     """
 
     __file_path = "file.json"
-    __objects = {}
+    __objects = dict()
 
     def all(self):
         """  returns the dictionary:  __objects """
+
         return self.__objects
 
     def new(self, obj):
         """
         creates new object, where id is <class>.<id>
         """
+
         key = obj.__class__.__name__ + "." + str(obj.id)
         self.__objects[key] = obj
 
@@ -29,18 +36,20 @@ class FileStorage():
         """
         save __objects dictionary to a jason file
         """
+
         objects = self.__objects
         obj_dict = {obj: objects[obj].to_dict() for obj in objects.keys()}
-        with open(self.__file_path, "w") as f:
-            json.dump(obj_dict, f)
+        with open(self.__file_path, "w") as json_file:
+            json.dump(obj_dict, json_file)
 
     def reload(self):
         """
         deserializes the JSON file to __objects
         """
+
         try:
-            with open(self.__file_path, 'r', encoding="UTF8") as f:
-                for key, value in json.load(f).items():
+            with open(self.__file_path, 'r', encoding="UTF8") as json_file:
+                for key, value in json.load(json_file).items():
                     attri_value = eval(value["__class__"])(**value)
                     self.__objects[key] = attri_value
         except FileNotFoundError:
