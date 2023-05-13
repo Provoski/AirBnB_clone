@@ -1,10 +1,14 @@
 #!/usr/bin/python3
-""" This module creates the review class """
 from models.base_model import BaseModel
+""" review model"""
 
 
 class Review(BaseModel):
-    """ This classs inherits from Base Class and manages the review class """
+    """ Class Review that inherits from base model """
     place_id = ""
     user_id = ""
     text = ""
+
+    def __init__(self, *args, **kwargs):
+        """ Constructor """
+        super().__init__(self, *args, **kwargs)

@@ -1,8 +1,8 @@
 #!/usr/bin/python3
-""" This module creates a state class"""
 from models.base_model import BaseModel
+"""states model"""
 
 
 class State(BaseModel):
-    """ This classs inherits from Base Class and manages the state class"""
+    """ Class State  that inherits from base model """
     name = ""

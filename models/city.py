@@ -1,9 +1,13 @@
 #!/usr/bin/python3
-""" This module creates a city class"""
 from models.base_model import BaseModel
+"""city model"""
 
 
 class City(BaseModel):
-    """ This classs inherits from Base Class and manages the city class"""
+    """ Class State  that inherits from base_model """
     state_id = ""
     name = ""
+
+    def __init__(self, *args, **kwargs):
+        """ Constructor """
+        super().__init__(self, *args, **kwargs)

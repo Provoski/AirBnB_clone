@@ -1,8 +1,12 @@
 #!/usr/bin/python3
-""" This module creates the amaenity class"""
 from models.base_model import BaseModel
+"""amenities model"""
 
 
 class Amenity(BaseModel):
-    """ This classs inherits from Base Class and manages the amenity class"""
+    """ Class Amenity that inherits from base_model """
     name = ""
+
+    def __init__(self, *args, **kwargs):
+        """ Constructor """
+        super().__init__(self, *args, **kwargs)
