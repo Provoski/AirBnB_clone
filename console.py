@@ -6,6 +6,7 @@ import cmd
 import shlex
 import sys
 import models
+import re
 from models.base_model import BaseModel
 from models.amenity import Amenity
 from models.city import City
@@ -31,19 +32,23 @@ class HBNBCommand(cmd.Cmd):
 
     def do_quit(self, args):
         """ Defines quit option"""
+
         return True
 
     def do_EOF(self, args):
         """ Defines EOF option"""
+
         print()
         return True
 
     def emptyline(self):
         """ Defines Empty option"""
-        self.prompt
+
+        pass
 
     def do_create(self, args):
         """Creates an instance of BaseModel"""
+
         if args:
             if args in self.classes:
                 model = getattr(sys.modules[__name__], args)
@@ -58,6 +63,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_show(self, args):
         """prints string representation based on the class name and id"""
+
         tokens = shlex.split(args)
         if len(tokens) == 0:
             print("** class name missing **")
@@ -72,10 +78,11 @@ class HBNBCommand(cmd.Cmd):
                 if instance_id in all_instance_dict:
                     print(all_instance_dict[instance_id])
                 else:
-                    print("** instance does'nt exist **")
+                    print("** no instance found **")
 
     def do_destroy(self, args):
         """Deletes an instance based on the class name and id"""
+
         tokens = shlex.split(args)
         if len(tokens) == 0:
             print("** class name missing **")
@@ -90,10 +97,11 @@ class HBNBCommand(cmd.Cmd):
                 if instance_id in all_instance_dict:
                     del all_instance_dict[instance_id]
                 else:
-                    print("** instance does'nt exist **")
+                    print("** no instance found **")
 
     def do_all(self, args):
         """all string representation of all instances"""
+
         tokens = shlex.split(args)
         instance_dict = []
         all_instance_dict = models.storage.all()
@@ -147,37 +155,46 @@ class HBNBCommand(cmd.Cmd):
                 setattr(instance, tokens[2], tokens[3])
                 models.storage.save()
 
-    def do_count(self, argument):
+    def do_count(self, args):
         """  retrieve the number of instances of a class """
-        tokensA = shlex.split(argument)
+
+        tokens = shlex.split(args)
         dic = models.storage.all()
         num_instances = 0
-        if tokensA[0] not in self.classes:
+        if tokens[0] not in self.classes:
             print("** class doesn't exist **")
             return
         else:
             for key in dic:
                 className = key.split('.')
-                if className[0] == tokensA[0]:
+                if className[0] == tokens[0]:
                     num_instances += 1
-                print(num_instances)
+            print(num_instances)
 
-    def precmd(self, argument):
+    def precmd(self, args):
         """ executed just before the command line line is interpreted """
-        args = argument.split('.', 1)
-        if len(args) == 2:
-            _class = args[0]
-            args = args[1].split('(', 1)
-            command = args[0]
-            if len(args) == 2:
-                args = args[1].split(')', 1)
-                if len(args) == 2:
-                    _id = args[0]
-                    other_arguments = args[1]
-            line = command + " " + _class + " " + _id + " " + other_arguments
-            return line
+        new_args = str()
+        tokens = re.split(r'[,.()"\s:}{\']+', args)
+        tokens_len = len(tokens)
+        try:
+            if tokens[1] == "update":
+                new_args = tokens[1] + " " + tokens[0]
+                for i in range(2, tokens_len):
+                    new_args = new_args + " " + tokens[i]
+                return new_args
+        except IndexError:
+            pass
+        class_model = args.split('.')
+        if len(class_model) == 2:
+            command = class_model[1].split('(')
+            new_args = command[0] + " "
+            new_args = new_args + class_model[0] + " "
+            if len(command) == 2:
+                query = command[1].split(')')
+                new_args = new_args + query[0]
+            return new_args
         else:
-            return argument
+            return args
 
 
 if __name__ == '__main__':

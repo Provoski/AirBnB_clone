@@ -15,6 +15,7 @@ class Place(BaseModel):
     max_guest = int()
     price_by_night = int()
     latitude = float()
+    laitude = round(latitude, 1)
     longitude = float()
     amenity_ids = []
 
