@@ -20,8 +20,7 @@ class FileStorage():
         reload() - deserializes the JSON file <file.json>
                 to dictionary object <__objects>
     """
-
-    __file_path = "file.json"
+    __file_path = str("file.json")
     __objects = dict()
 
     def all(self):
@@ -33,15 +32,14 @@ class FileStorage():
         """
         creates new object, where id is <class>.<id>
         """
-
-        key = obj.__class__.__name__ + "." + str(obj.id)
+        self.obj = obj
+        key = self.obj.__class__.__name__ + "." + str(obj.id)
         self.__objects[key] = obj
 
     def save(self):
         """
         save __objects dictionary to a jason file
         """
-
         objects = self.__objects
         obj_dict = {obj: objects[obj].to_dict() for obj in objects.keys()}
         with open(self.__file_path, "w") as json_file:

@@ -43,7 +43,7 @@ class HBNBCommand(cmd.Cmd):
         pass
 
     def do_create(self, args):
-        """creates <class_name> - create an instance of <class_name>"""
+        """create <class_name> - create an instance of <class_name>"""
         if args:
             if args in self.classes:
                 model = getattr(sys.modules[__name__], args)
