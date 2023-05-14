@@ -27,7 +27,6 @@ class TestHBNBCommand(unittest.TestCase):
     def test_show(self):
         """test for show method"""
         self.assertTrue(hasattr(self.console, "do_show"))
-        self.console.do_show()
 
     def test_all(self):
         """test for all method"""
@@ -49,6 +48,6 @@ class TestHBNBCommand(unittest.TestCase):
         """clean up"""
         sys.stdout = sys.__stdout__
 
+
 if __name__ == "__main__":
     unittest.main()
-

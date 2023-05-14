@@ -17,9 +17,8 @@ from models.user import User
 
 
 class HBNBCommand(cmd.Cmd):
-    """HBNB Class """
+    """HBNB Class"""
     prompt = '(hbnb) '
-
     classes = {
                 'BaseModel': BaseModel,
                 'Amenity': Amenity,
@@ -31,24 +30,20 @@ class HBNBCommand(cmd.Cmd):
                             }
 
     def do_quit(self, args):
-        """ Defines quit option"""
-
+        """quit - exit the console"""
         return True
 
     def do_EOF(self, args):
-        """ Defines EOF option"""
-
+        """Defines EOF option"""
         print()
         return True
 
     def emptyline(self):
-        """ Defines Empty option"""
-
+        """Defines Empty option"""
         pass
 
     def do_create(self, args):
-        """Creates an instance of BaseModel"""
-
+        """creates <class_name> - create an instance of <class_name>"""
         if args:
             if args in self.classes:
                 model = getattr(sys.modules[__name__], args)
@@ -62,8 +57,7 @@ class HBNBCommand(cmd.Cmd):
         return
 
     def do_show(self, args):
-        """prints string representation based on the class name and id"""
-
+        """show <class_name> <id> - show instance using class_name & id"""
         tokens = shlex.split(args)
         if len(tokens) == 0:
             print("** class name missing **")
@@ -81,8 +75,7 @@ class HBNBCommand(cmd.Cmd):
                     print("** no instance found **")
 
     def do_destroy(self, args):
-        """Deletes an instance based on the class name and id"""
-
+        """destroy <class_name> <id> - delete instance using class_name & id"""
         tokens = shlex.split(args)
         if len(tokens) == 0:
             print("** class name missing **")
@@ -100,8 +93,7 @@ class HBNBCommand(cmd.Cmd):
                     print("** no instance found **")
 
     def do_all(self, args):
-        """all string representation of all instances"""
-
+        """all, all <class_name> - display all instance"""
         tokens = shlex.split(args)
         instance_dict = []
         all_instance_dict = models.storage.all()
@@ -123,8 +115,7 @@ class HBNBCommand(cmd.Cmd):
                     print(instance_dict)
 
     def do_update(self, args):
-        """Updates an instance based on the class name and id """
-
+        """update <class_name> <id> - update instance using class_name & id"""
         tokens = shlex.split(args)
         if len(tokens) == 0:
             print("** class name missing **")
@@ -156,8 +147,7 @@ class HBNBCommand(cmd.Cmd):
                 models.storage.save()
 
     def do_count(self, args):
-        """  retrieve the number of instances of a class """
-
+        """retrieve the number of instances of a class"""
         tokens = shlex.split(args)
         dic = models.storage.all()
         num_instances = 0
@@ -198,5 +188,4 @@ class HBNBCommand(cmd.Cmd):
 
 
 if __name__ == '__main__':
-    """infinite loop"""
     HBNBCommand().cmdloop()
